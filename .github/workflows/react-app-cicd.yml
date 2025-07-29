@@ -59,7 +59,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: react-app-build
+          name: react-app-build-18
           path: ./dist
 
       - name: Build Docker image
