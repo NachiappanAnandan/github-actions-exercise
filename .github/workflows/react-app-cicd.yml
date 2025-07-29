@@ -81,12 +81,14 @@ jobs:
   deploy:
     needs: use-artifact
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    env:
+      ENV_NAME: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
       - name: Print deployment environment
-        run: echo "Deploying to ${{ job.environment.name }}"
+        run: echo "Deploying to $ENV_NAME"
 
       - name: Print environment variables
         run: |
