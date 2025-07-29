@@ -86,9 +86,9 @@ jobs:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
       - name: Print deployment environment
-        run: echo "Deploying to ${{github}}"
+        run: echo "Deploying to ${{ env.name }}"
 
       - name: Print environment variables
         run: |
-          echo "API_URL: $API_URL"
-          echo "DB_NAME: $DB_NAME"
+          echo "API_URL: ${{ env.API_URL }}"
+          echo "DB_NAME: ${{ env.DB_NAME }}"
