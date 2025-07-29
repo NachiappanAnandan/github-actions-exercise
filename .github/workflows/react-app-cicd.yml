@@ -84,11 +84,9 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
-    env:
-      ENV_NAME: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
       - name: Print deployment environment
-        run: echo "Deploying to $ENV_NAME"
+        run: echo "Deploying to ${{github}}"
 
       - name: Print environment variables
         run: |
